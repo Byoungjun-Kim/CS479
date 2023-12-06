@@ -118,7 +118,6 @@ def TripletSemiHardLoss(y_true, y_pred, device, margin=1.0):
     num_positives = mask_positives.sum()
     
     if num_positives == 0:
-        print('fuck i was here')
         return torch.tensor([0]).to(device)
     triplet_loss = (torch.max(torch.mul(loss_mat, mask_positives), torch.tensor([0.]).to(device))).sum() / num_positives
     triplet_loss = triplet_loss.to(dtype=embeddings.dtype)
